@@ -1,0 +1,14 @@
+vesion: "3.11"
+
+services:
+  app:
+    restart: always
+    build: .
+    command: sh -c 'python main.py'
+    container_name: bot
+    volumes:
+      - volume_app:/app
+    env_file:
+      - .env
+
+volumes: volume_app
