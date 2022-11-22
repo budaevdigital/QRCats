@@ -9,3 +9,5 @@ RUN pip install -r /app/requirements.txt --no-cache-dir
 COPY app/ /app
 
 WORKDIR /app
+
+CMD ["python", "main.py"]
