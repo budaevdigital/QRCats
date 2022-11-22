@@ -1,0 +1,31 @@
+name: QRCats workflow
+
+on: [push]
+
+jobs:
+  format_and_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11.0
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Formatting With Black
+        run: |
+          # Проверяем форматтеров директорию проекта
+          black --check --diff app/
+
+      - name: Lintering With Flake8
+        run: |
+          python -m flake8 app/
+
+      - name: Python Unittests
+        run: |
+          python -m unittest
