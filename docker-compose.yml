@@ -5,10 +5,10 @@ services:
     restart: always
     build: .
     command: sh -c 'python main.py'
-    container_name: bot
+    container_name: qrcats
     volumes:
       - volume_app:/app
     env_file:
-      - .env
+      - app/.env
 
 volumes: volume_app
