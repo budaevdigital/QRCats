@@ -7,18 +7,12 @@ extend-exclude = '''
   | venv
   | migrations
   | settings.py
-  | .eggs
   | .git
-  | .hg
   | .mypy_cache
-  | .tox
   | .venv
   | .env
   | __init__.py
   | _build
-  | buck-out
-  | build
-  | dist
   | Dockerfile
   | settings.py
   | tests
