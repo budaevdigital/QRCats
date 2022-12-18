@@ -1,6 +1,10 @@
-name: QRCats workflow
+name: QRCats workflow codestyle
 
-on: [push]
+on:
+  pull_request:
+    branches:
+      - develop
+      - master
 
 jobs:
   format_and_tests:
