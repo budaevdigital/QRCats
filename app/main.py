@@ -3,7 +3,11 @@ import uvicorn
 from core.config import settings
 from fastapi import FastAPI
 
-app = FastAPI(title=settings.app_title, description=settings.app_description)
+app = FastAPI(
+    title=settings.app_title,
+    description=settings.app_description,
+    version=settings.app_version,
+)
 
 if __name__ == "__main__":
     uvicorn.run(
