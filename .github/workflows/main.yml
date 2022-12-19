@@ -30,6 +30,6 @@ jobs:
         run: |
           python -m flake8 app/
 
-      - name: Python Unittests
+      - name: Python tests
         run: |
-          python -m unittest
+          pytest
