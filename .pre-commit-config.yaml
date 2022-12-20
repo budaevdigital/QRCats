@@ -14,7 +14,7 @@ repos:
       - id: isort
         name: isort
         description: isort enforcement
-        entry: isort
+        entry: isort app/
         language: python
         types: [python]
         exclude: (migrations|tests|alembic)

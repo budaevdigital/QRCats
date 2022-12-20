@@ -28,8 +28,4 @@ jobs:
 
       - name: Lintering With Flake8
         run: |
-          python -m flake8 app/
-
-      - name: Python tests
-        run: |
-          pytest
+          python -m flake8 --config setup.cfg app/
