@@ -11,6 +11,9 @@ class Settings(BaseSettings):
         "попечения кошкам — на любые цели, связанные "
         "с поддержкой кошачьей популяции."
     )
+    app_version: str = "0.1.0"
+    database_url: str = "sqlite+aiosqlite:///./fastapi.db"
+    secret_key: str = "SECRETaidwoksopQOIWJdskdsh"
 
     class Config:
         env_file = ".env"
