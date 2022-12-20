@@ -23,8 +23,8 @@ jobs:
 
       - name: Formatting With Black
         run: |
-          # Проверяем форматтеров директорию проекта
-          black --check --diff app/
+          # Проверяем форматтером директорию проекта
+          black --check --diff --line-length=79 app/
 
       - name: Lintering With Flake8
         run: |

@@ -26,7 +26,7 @@ repos:
       - id: black
         name: black
         description: format the code using black
-        entry: black
+        entry: black app/
         language: python
         types: [python]
         exclude: (migrations|config/settings/|tests|alembic)
