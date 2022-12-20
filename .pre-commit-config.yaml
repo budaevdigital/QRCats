@@ -14,7 +14,7 @@ repos:
       - id: isort
         name: isort
         description: isort enforcement
-        entry: isort app/
+        entry: isort
         language: python
         types: [python]
         args: [--settings, setup.cfg]
