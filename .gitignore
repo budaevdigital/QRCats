@@ -4,3 +4,4 @@ vscode/
 .git
 .env
 __pycache__/
+*.db
