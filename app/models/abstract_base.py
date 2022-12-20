@@ -1,6 +1,8 @@
 # app/models/abstract_base.py
 from datetime import datetime
-from sqlalchemy import Column, Integer, DateTime, Boolean
+
+from sqlalchemy import Boolean, Column, DateTime, Integer
+
 from app.core.db import Base
 
 
