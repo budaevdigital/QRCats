@@ -40,6 +40,4 @@ repos:
         entry: flake8 app/
         language: python
         types: [python]
-        additional_dependencies:
-          - flake8-docstrings
         args: [--config, setup.cfg]
