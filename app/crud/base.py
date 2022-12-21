@@ -18,7 +18,7 @@ class CRUDBase:
         )
         return db_obj.scalars().first()
 
-    async def get_nulti(self, session: AsyncSession):
+    async def get_multi(self, session: AsyncSession):
         db_obj = await session.execute(select(self.model))
         return db_obj.scalars().all()
 
