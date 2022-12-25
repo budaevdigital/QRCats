@@ -9,7 +9,7 @@ from app.core.config import settings
 class PreBase:
     @declared_attr
     def __tablename__(cls):
-        return cls.__name__.lower()
+        return cls.__name__.lower()  # noqa
 
     id = Column(Integer, primary_key=True)
 
@@ -24,5 +24,5 @@ AsyncSessionLocal = sessionmaker(engine, class_=AsyncSession)
 
 # Opening the session generator with coroutine
 async def get_async_session():
-    async with AsyncSession() as async_session:
+    async with AsyncSessionLocal() as async_session:  # noqa
         yield async_session
