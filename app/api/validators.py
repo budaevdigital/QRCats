@@ -1,6 +1,5 @@
 # app/api/validators.py
 from http import HTTPStatus
-from typing import Optional
 
 from fastapi import HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -35,19 +34,19 @@ async def check_project_exists(
     return charity_obj
 
 
-async def check_invested_before_edit_and_delete(
-    charity_id: int,
-    session: AsyncSession,
-    new_amount: Optional[int] = None,
-) -> CharityProject:
-    charity_obj = await charity_project_crud.get(
-        obj_id=charity_id, session=session
-    )
+async def check_charity_is_closed(
+    charity_obj: CharityProject,
+) -> None:
     if charity_obj.fully_invested:
         raise HTTPException(
             status_code=HTTPStatus.FORBIDDEN,
             detail="Закрытые проекты нельзя удалять или редактировать!",
         )
+
+
+async def check_charity_new_and_old_amount(
+    charity_obj: CharityProject, new_amount: int
+) -> None:
     if new_amount is not None:
         if new_amount <= charity_obj.invested_amount:
             raise HTTPException(
@@ -57,6 +56,11 @@ async def check_invested_before_edit_and_delete(
                     "уже внесённых пожертвований!"
                 ),
             )
+
+
+async def check_charity_invested_before_delete(
+    charity_obj: CharityProject,
+) -> None:
     if charity_obj.invested_amount > 0:
         raise HTTPException(
             status_code=HTTPStatus.CONFLICT,
@@ -65,4 +69,3 @@ async def check_invested_before_edit_and_delete(
                 "из-за наличия в нём пожертвований"
             ),
         )
-    return CharityProject

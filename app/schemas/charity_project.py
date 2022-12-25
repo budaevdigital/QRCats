@@ -12,9 +12,6 @@ class CharityProjectBase(BaseModel):
     description: Optional[str] = Field(None, min_length=1)
     full_amount: Optional[PositiveInt]
 
-    class Config:
-        extra = Extra.forbid
-
 
 class CharityProjectCreate(CharityProjectBase):
     """Schema for Project Create."""
@@ -26,14 +23,15 @@ class CharityProjectCreate(CharityProjectBase):
     @validator("name", "description")
     def check_for_empty_and_none(cls, value: str):
         if not value or value is None:
-            raise ValueError("Fields must not be empty")
+            raise ValueError("Поля не могут быть пустыми")
         return value
 
 
 class CharityProjectUpdate(CharityProjectBase):
     """Schema for Project Update."""
 
-    pass
+    class Config:
+        extra = Extra.forbid
 
 
 class CharityProjectDB(CharityProjectBase):
