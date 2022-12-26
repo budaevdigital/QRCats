@@ -8,7 +8,7 @@ class Donation(AbstractBaseModel):
     """Model for representing the donation system in the database"""
 
     user_id = Column(Integer, ForeignKey("user.id"))
-    description = Column(Text)
+    comment = Column(Text)
 
     def __repr__(self) -> str:
         return (
