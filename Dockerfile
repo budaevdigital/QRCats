@@ -1,13 +1,15 @@
 FROM python:3.11.0-slim
 
-RUN mkdir /app
+RUN mkdir /qrkats
 
-COPY requirements.txt /app
+WORKDIR /qrkats
 
-RUN pip install -r /app/requirements.txt --no-cache-dir
+RUN pip install --upgrade pip
 
-COPY app/ /app
+COPY ./requirements.txt .
 
-WORKDIR /app
+RUN pip install -r requirements.txt --no-cache-dir
 
-CMD ["python", "main.py"]
+COPY . .
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
