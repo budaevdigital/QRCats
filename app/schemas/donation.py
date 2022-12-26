@@ -6,14 +6,14 @@ from pydantic import BaseModel, PositiveInt
 
 
 class DonationCreate(BaseModel):
-    """Schema for Donation Create."""
+    """Схема создания пожертвования."""
 
     comment: Optional[str]
     full_amount: PositiveInt
 
 
 class DonationPartDB(DonationCreate):
-    """Schema for Donation Create."""
+    """Схема создания пожертвования."""
 
     id: int
     create_date: datetime
@@ -24,7 +24,7 @@ class DonationPartDB(DonationCreate):
 
 
 class DonationFullDB(DonationPartDB):
-    """Schema to display all Donation object data"""
+    """Схема для отображения всех данных объекта пожертвования"""
 
     invested_amount: Optional[int]
     fully_invested: Optional[bool]

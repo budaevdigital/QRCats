@@ -5,7 +5,7 @@ from app.models.abstract_base import AbstractBaseModel
 
 
 class Donation(AbstractBaseModel):
-    """Model for representing the donation system in the database"""
+    """Модель представления системы пожертвований в базе данных"""
 
     user_id = Column(Integer, ForeignKey("user.id"))
     comment = Column(Text)
@@ -18,6 +18,6 @@ class Donation(AbstractBaseModel):
 
     def __str__(self) -> str:
         return (
-            f"Donation Amount: {self.full_amount}, "
-            f"Donated from this amount: {self.invested_amount} "
+            f"Сумма пожертвования: {self.full_amount}, "
+            f"Пожертвовано их этой суммы: {self.invested_amount} "
         )

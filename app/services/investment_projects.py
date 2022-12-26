@@ -9,9 +9,9 @@ from app.models import CharityProject, Donation
 
 
 def closing(db_obj: Union[Donation, CharityProject]) -> None:
-    db_obj.fully_invested = True
-    db_obj.invested_amount = db_obj.full_amount
-    db_obj.close_date = datetime.now()
+    db_obj.fully_invested = True  # noqa
+    db_obj.invested_amount = db_obj.full_amount  # noqa
+    db_obj.close_date = datetime.now()  # noqa
 
 
 async def investment_when_create(session: AsyncSession) -> None:

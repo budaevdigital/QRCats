@@ -6,7 +6,7 @@ from pydantic import BaseModel, Extra, Field, PositiveInt, validator
 
 
 class CharityProjectBase(BaseModel):
-    """Schema for Project Base."""
+    """Схема базы проекта."""
 
     name: Optional[str] = Field(None, min_length=1, max_length=100)
     description: Optional[str] = Field(None, min_length=1)
@@ -14,7 +14,7 @@ class CharityProjectBase(BaseModel):
 
 
 class CharityProjectCreate(CharityProjectBase):
-    """Schema for Project Create."""
+    """Схема для создания проекта."""
 
     name: str = Field(..., min_length=1, max_length=100)
     description: str = Field(..., min_length=1)
@@ -28,14 +28,14 @@ class CharityProjectCreate(CharityProjectBase):
 
 
 class CharityProjectUpdate(CharityProjectBase):
-    """Schema for Project Update."""
+    """Схема обновления проекта."""
 
     class Config:
         extra = Extra.forbid
 
 
 class CharityProjectDB(CharityProjectBase):
-    """Schema for Project in DB."""
+    """Схема проекта в БД."""
 
     id: int
     invested_amount: Optional[int]

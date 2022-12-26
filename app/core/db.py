@@ -18,11 +18,11 @@ Base = declarative_base(cls=PreBase)
 
 engine = create_async_engine(settings.database_url)
 
-# Create async func with sessionmaker for accessing the database
+# Асинхронная функц. для доступа к БД
 AsyncSessionLocal = sessionmaker(engine, class_=AsyncSession)
 
 
-# Opening the session generator with coroutine
+# Открытие доступа с помощью контекстного менеджера и yield
 async def get_async_session():
     async with AsyncSessionLocal() as async_session:  # noqa
         yield async_session
