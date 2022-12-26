@@ -6,18 +6,15 @@ from pydantic import BaseModel, Extra, Field, PositiveInt, validator
 
 
 class CharityProjectBase(BaseModel):
-    """Schema for Project Base."""
+    """Схема базы проекта."""
 
     name: Optional[str] = Field(None, min_length=1, max_length=100)
     description: Optional[str] = Field(None, min_length=1)
     full_amount: Optional[PositiveInt]
 
-    class Config:
-        extra = Extra.forbid
-
 
 class CharityProjectCreate(CharityProjectBase):
-    """Schema for Project Create."""
+    """Схема для создания проекта."""
 
     name: str = Field(..., min_length=1, max_length=100)
     description: str = Field(..., min_length=1)
@@ -26,22 +23,24 @@ class CharityProjectCreate(CharityProjectBase):
     @validator("name", "description")
     def check_for_empty_and_none(cls, value: str):
         if not value or value is None:
-            raise ValueError("Fields must not be empty")
+            raise ValueError("Поля не могут быть пустыми")
         return value
 
 
 class CharityProjectUpdate(CharityProjectBase):
-    """Schema for Project Update."""
+    """Схема обновления проекта."""
 
-    pass
+    class Config:
+        extra = Extra.forbid
 
 
 class CharityProjectDB(CharityProjectBase):
-    """Schema for Project in DB."""
+    """Схема проекта в БД."""
 
     id: int
     invested_amount: Optional[int]
-    fully_invested: Optional[int]
+    fully_invested: Optional[bool]
+
     create_date: Optional[datetime]
     close_date: Optional[datetime]
 

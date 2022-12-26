@@ -5,26 +5,26 @@ from typing import Optional
 from pydantic import BaseModel, PositiveInt
 
 
-class DonationBase(BaseModel):
-    """Schema for Donation Base."""
+class DonationCreate(BaseModel):
+    """Схема создания пожертвования."""
 
     comment: Optional[str]
-    fully_amount: PositiveInt
+    full_amount: PositiveInt
 
 
-class DonationCreate(DonationBase):
-    """Schema for Donation Create."""
+class DonationPartDB(DonationCreate):
+    """Схема создания пожертвования."""
 
     id: int
-    user_id: Optional[int]
     create_date: datetime
+    user_id: Optional[int]
 
     class Config:
         orm_mode = True
 
 
-class DonationFull(DonationCreate):
-    """Schema to display all Donation object data"""
+class DonationFullDB(DonationPartDB):
+    """Схема для отображения всех данных объекта пожертвования"""
 
     invested_amount: Optional[int]
     fully_invested: Optional[bool]

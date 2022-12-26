@@ -5,7 +5,7 @@ from app.models.abstract_base import AbstractBaseModel
 
 
 class CharityProject(AbstractBaseModel):
-    """Model for representing a charitable foundation in the database"""
+    """Модель представления благотворительного фонда в базе данных"""
 
     name = Column(String(100), unique=True, nullable=False)
     description = Column(Text, nullable=False)
@@ -16,4 +16,4 @@ class CharityProject(AbstractBaseModel):
         )
 
     def __str__(self) -> str:
-        return f"Project: {self.name}, Full amount: {self.full_amount}"
+        return f"Проект: {self.name}, Нужно денег: {self.full_amount}"
