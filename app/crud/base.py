@@ -8,7 +8,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.user import User
 
 
-
 class CRUDBase:
     def __init__(self, model) -> None:
         self.model = model

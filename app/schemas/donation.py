@@ -19,7 +19,6 @@ class DonationPartDB(DonationCreate):
     create_date: datetime
     user_id: Optional[int]
 
-
     class Config:
         orm_mode = True
 
