@@ -28,8 +28,7 @@ async def get_all_donations_for_superuser(
 
     Показывает список всех пожертвований
     """
-    donations_objs = await donation_crud.get_multi(session)
-    return donations_objs
+    return await donation_crud.get_multi(session)
 
 
 @router.get(
@@ -46,8 +45,7 @@ async def get_donations_for_current_user(
     """
     Показывает список всех пожертвований пользователя
     """
-    donations_objs = await donation_crud.get_by_user(user, session)
-    return donations_objs
+    return await donation_crud.get_by_user(user, session)
 
 
 @router.post(

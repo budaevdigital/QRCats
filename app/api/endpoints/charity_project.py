@@ -34,8 +34,7 @@ async def get_all_charity_projects(
     session: AsyncSession = Depends(get_async_session),
 ):
     """Запрос на получение всех проектов"""
-    charity_objs = await charity_project_crud.get_multi(session)
-    return charity_objs
+    return await charity_project_crud.get_multi(session)
 
 
 @router.post(
@@ -83,8 +82,7 @@ async def remove_charity_project(
     )
     await check_charity_is_closed(charity_obj)
     await check_charity_invested_before_delete(charity_obj)
-    charity_obj = await charity_project_crud.remove(charity_obj, session)
-    return charity_obj
+    return await charity_project_crud.remove(charity_obj, session)
 
 
 @router.patch(

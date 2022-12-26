@@ -17,8 +17,7 @@ class CRUDCharityProject(CRUDBase):
                 CharityProject.name == charity_name
             )
         )
-        db_charity_id = db_charity_id.scalars().first()
-        return db_charity_id
+        return db_charity_id.scalars().first()
 
 
 charity_project_crud = CRUDCharityProject(CharityProject)
