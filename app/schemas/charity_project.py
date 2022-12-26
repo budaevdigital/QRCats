@@ -40,6 +40,7 @@ class CharityProjectDB(CharityProjectBase):
     id: int
     invested_amount: Optional[int]
     fully_invested: Optional[bool]
+
     create_date: Optional[datetime]
     close_date: Optional[datetime]
 

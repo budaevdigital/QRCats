@@ -8,6 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.user import User
 
 
+
 class CRUDBase:
     def __init__(self, model) -> None:
         self.model = model
@@ -49,6 +50,7 @@ class CRUDBase:
         db_obj_data = jsonable_encoder(db_obj)
         update_data = new_obj_in.dict(exclude_unset=True)
         for field in db_obj_data:
+
             if field in update_data:
                 setattr(db_obj, field, update_data[field])
         session.add(db_obj)
